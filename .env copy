@@ -1,0 +1,36 @@
+# Copy from .env.local on the Vercel dashboard
+# https://nextjs.org/learn/dashboard-app/setting-up-your-database#create-a-postgres-database
+# Recommended for most uses
+DATABASE_URL=postgresql://neondb_owner:npg_FI4gumZCxzG9@ep-curly-lab-acs2fvrk-pooler.sa-east-1.aws.neon.tech/neondb?sslmode=require
+
+# For uses requiring a connection without pgbouncer
+DATABASE_URL_UNPOOLED=postgresql://neondb_owner:npg_FI4gumZCxzG9@ep-curly-lab-acs2fvrk.sa-east-1.aws.neon.tech/neondb?sslmode=require
+
+# Parameters for constructing your own connection string
+PGHOST=ep-curly-lab-acs2fvrk-pooler.sa-east-1.aws.neon.tech
+PGHOST_UNPOOLED=ep-curly-lab-acs2fvrk.sa-east-1.aws.neon.tech
+PGUSER=neondb_owner
+PGDATABASE=neondb
+PGPASSWORD=npg_FI4gumZCxzG9
+
+# Parameters for Vercel Postgres Templates
+POSTGRES_URL=postgresql://neondb_owner:npg_FI4gumZCxzG9@ep-curly-lab-acs2fvrk-pooler.sa-east-1.aws.neon.tech/neondb?sslmode=require
+POSTGRES_URL_NON_POOLING=postgresql://neondb_owner:npg_FI4gumZCxzG9@ep-curly-lab-acs2fvrk.sa-east-1.aws.neon.tech/neondb?sslmode=require
+POSTGRES_USER=neondb_owner
+POSTGRES_HOST=ep-curly-lab-acs2fvrk-pooler.sa-east-1.aws.neon.tech
+POSTGRES_PASSWORD=npg_FI4gumZCxzG9
+POSTGRES_DATABASE=neondb
+POSTGRES_URL_NO_SSL=postgresql://neondb_owner:npg_FI4gumZCxzG9@ep-curly-lab-acs2fvrk-pooler.sa-east-1.aws.neon.tech/neondb
+POSTGRES_PRISMA_URL=postgresql://neondb_owner:npg_FI4gumZCxzG9@ep-curly-lab-acs2fvrk-pooler.sa-east-1.aws.neon.tech/neondb?connect_timeout=15&sslmode=require
+
+# Neon Auth environment variables for Next.js
+NEXT_PUBLIC_STACK_PROJECT_ID=****************************
+NEXT_PUBLIC_STACK_PUBLISHABLE_CLIENT_KEY=****************************************
+STACK_SECRET_SERVER_KEY=***********************
+
+# `openssl rand -base64 32`
+AUTH_SECRET=b6216ef5e8fb61dece15ead97d0a530d
+AUTH_URL=http://localhost:3000/api/auth
+
+
+#user@nextmail.com

@@ -3,6 +3,28 @@ import { z } from 'zod';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 import postgres from 'postgres';
+import { signIn } from '@/auth';
+import { AuthError } from 'next-auth';
+
+export async function authenticate(
+  prevState: string | undefined,
+  formData: FormData,
+) {
+  try {
+    await signIn('credentials', formData);
+  } catch (error) {
+    if (error instanceof AuthError) {
+      switch (error.type) {
+        case 'CredentialsSignin':
+          return 'Invalid credentials.';
+        default:
+          return 'Something went wrong.';
+      }
+    }
+    throw error;
+  }
+}
+
 
 const sql = postgres(process.env.POSTGRES_URL!, {ssl: 'require'});
 
@@ -13,6 +35,7 @@ const formSchema = z.object({
     status: z.enum(['pending', 'paid'], { invalid_type_error: 'Please select an invoice status' }),
     date: z.string(),
 });
+
 // customerId - O Zod já gera um erro se o campo do cliente estiver vazio, pois espera um tipo string. Mas vamos adicionar uma mensagem amigável se o usuário não selecionar um cliente.
 
 // amount - Já que você está coagindo o tipo de valor de string para number, o padrão será zero se a string estiver vazia. Vamos dizer ao Zod que sempre queremos a quantidade maior que 0 com o .gt() função.
